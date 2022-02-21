@@ -44,7 +44,7 @@ function agenda(funcao, min, hr, value){
 }
 
 
-agenda(enviarsell, '55', '17',1)
+agenda(enviarsell, '54', '17',1)
 agenda(enviarsell, '56', '17',2)
 agenda(enviarsell, '57', '17',3)
 agenda(enviarsell, '58', '17',4)
