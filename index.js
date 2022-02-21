@@ -1,6 +1,9 @@
-const http  = require('http')
+const express = require('express')
+const path = require('path')
+const app = express
+const router = express.Router()
+
 var  cron  =  require ( 'node-cron' ) ;
-const hostname = "localhost";
 const port = 3333;
 
 
@@ -44,23 +47,28 @@ function agenda(funcao, min, hr, value){
 
 }
 
-
+/*
 agenda(enviarsell, '55', '17',1)
 agenda(enviarsell, '56', '17',2)
 agenda(enviarsell, '57', '17',3)
 agenda(enviarsell, '58', '17',4)
-agenda(enviarsell, '59', '17',5)
+agenda(enviarsell, '59', '17',5)*/
 
-const server = http.createServer((req, res)=>{
-    res.setHeader("Content-type", "text-plain"),
-    res.end("hello world")
+router.get("/", (req, res)=> {
+  
 })
 
-server.listen(port, hostname, ()=>{
+router.get("/contato", (req,res)=>{
+
+})
+
+app.use(router)
+
+app.listen(port,()=>{
+    console.log("Servidor rodando")
     agenda(enviarsell, '55', '17',1)
     agenda(enviarsell, '56', '17',2)
-    agenda(enviarsell, '55', '17',3)
+    agenda(enviarsell, '57', '17',3)
     agenda(enviarsell, '58', '17',4)
     agenda(enviarsell, '59', '17',5)
-    console.log("Servidor rodando")
 })
