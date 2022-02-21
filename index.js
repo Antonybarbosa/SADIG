@@ -1,6 +1,6 @@
 const express = require('express')
 const path = require('path')
-const app = express
+const app = express()
 const router = express.Router()
 
 var  cron  =  require ( 'node-cron' ) ;
@@ -55,11 +55,11 @@ agenda(enviarsell, '58', '17',4)
 agenda(enviarsell, '59', '17',5)*/
 
 router.get("/", (req, res)=> {
-  
+    res.end(console.log(""))
 })
 
 router.get("/contato", (req,res)=>{
-
+    res.end(console.log(""))
 })
 
 app.use(router)
