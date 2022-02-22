@@ -66,9 +66,7 @@ app.use(router)
 
 app.listen(port,()=>{
     console.log("Servidor rodando")
-    agenda(enviarsell, '55', '17',1)
-    agenda(enviarsell, '56', '17',2)
-    agenda(enviarsell, '57', '17',3)
-    agenda(enviarsell, '58', '17',4)
-    agenda(enviarsell, '59', '17',5)
+    
+    enviarsell(4);
+    
 })
