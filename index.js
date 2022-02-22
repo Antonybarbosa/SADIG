@@ -55,7 +55,7 @@ agenda(enviarsell, '58', '17',4)
 agenda(enviarsell, '59', '17',5)*/
 
 router.get("/", (req, res)=> {
-    res.end(console.log(""))
+    res.end(console.log("online"))
 })
 
 router.get("/contato", (req,res)=>{
