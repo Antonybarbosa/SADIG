@@ -9,7 +9,7 @@ class logintoken{
 
       async tokenSankhya() {
         var agent = new https.Agent({ 
-            requestCert: false,
+            requestCert: true,
             rejectUnauthorized: false,
             ca: fs.readFileSync(path.join(__dirname,'cert','cert.pem')),
             cert: fs.readFileSync(path.join(__dirname,'cert','cert.pem'))
@@ -32,7 +32,7 @@ class logintoken{
                 }
             }
         },
-        //{ httpsAgent: agent }
+        { httpsAgent: agent }
         ).then(function(resposta){
 
             console.log('Status login: ' + resposta.status);
