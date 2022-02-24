@@ -68,9 +68,8 @@ router.get("/contato", (req,res)=>{
 app.use(router)
 
 app.listen(process.env.PORT || port,()=>{
+    
     console.log("Servidor rodando")
-
-
     enviarsell(4);
 
 
