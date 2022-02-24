@@ -32,7 +32,8 @@ class logintoken{
                 }
             }
         },
-        { httpsAgent: agent }).then(function(resposta){
+        //{ httpsAgent: agent }
+        ).then(function(resposta){
 
             console.log('Status login: ' + resposta.status);
             //console.log(resposta.data.responseBody);
