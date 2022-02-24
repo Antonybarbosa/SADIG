@@ -11,8 +11,8 @@ class logintoken{
         var agent = new https.Agent({ 
             requestCert: true,
             rejectUnauthorized: false,
-            ca: fs.readFileSync(path.join(__dirname,'cert','cert.pem')),
-            cert: fs.readFileSync(path.join(__dirname,'cert','cert.pem'))
+            ca: fs.readFileSync(path.join(__dirname,'/src/sankhya/cert','cert.pem')),
+            cert: fs.readFileSync(path.join(__dirname,'/src/sankhya/cert','cert.pem'))
           });
         
 
