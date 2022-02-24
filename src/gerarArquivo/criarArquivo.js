@@ -1,6 +1,8 @@
 const ftp = require('../EnviarSFTP')
 const fs = require('fs');
 
+const path = require('path')
+
 class criarArquivo{
 
      //texto -  são os dados para criar o arquivo
@@ -10,11 +12,11 @@ class criarArquivo{
      
      criarArquivo(texto, caminho, config,docname, datatual) {
      
-        fs.writeFile(caminho+'.txt', texto, function (err) {
+        fs.writeFile(path.join(__dirname+caminho+'.txt'), texto, function (err) {
           if (err) throw err;
             console.log('Arquivo Criado');
     
-            new ftp(config).sendFtp(datatual,docname, caminho+'.txt');      
+            new ftp(config).sendFtp(datatual,docname, path.join(__dirname+caminho+'.txt'));      
         });   
       
       };   

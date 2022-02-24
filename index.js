@@ -7,8 +7,10 @@ var  cron  =  require ( 'node-cron' ) ;
 const port = 3333;
 
 
-const farmina = require('./src/farmina/envioFarmina')
-const cafune = require('./src/cafune/envioCafune')
+//const farmina = require('./src/farmina/envioFarmina')
+//const cafune = require('./src/cafune/envioCafune')
+const farmina = require(path.join(__dirname+"/src/farmina/envioFarmina.js"))
+const cafune = require(path.join(__dirname +'/src/cafune/envioCafune.js'))
 
 
 function enviarsell(value){
@@ -68,6 +70,9 @@ app.use(router)
 app.listen(process.env.PORT || port,()=>{
     console.log("Servidor rodando")
     
+   
     enviarsell(4);
+
+
 
 })
