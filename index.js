@@ -53,13 +53,21 @@ function agenda(funcao, min, hr, value){
 
 
 router.get("/", (req, res)=> {
-    res.end(console.log("online"))
-    enviarsell(4);
+    res.json("online")
 })
 
-router.get("/contato", (req,res)=>{
-    res.end(console.log(""))
+router.get("/cafune", (req,res)=>{
+    res.json("iniciando envio cafune");
+    res.json(enviarsell(3));
+    res.json(enviarsell(4));
+    res.json(enviarsell(5));
 })
+router.get("/farmina", (req,res)=>{
+    res.end(console.log(""))
+    enviarsell(1);
+    enviarsell(2);
+})
+
 
 app.use(router)
 
