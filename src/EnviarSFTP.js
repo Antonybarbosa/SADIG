@@ -105,10 +105,10 @@ class EnviarSFTP{
                 host: this.config.host,
                 user: this.config.username,
                 password: this.config.password,
-                secure: true,
+                /*secure: true,
                 secureOptions:{
                   rejectUnauthorized: false
-                }
+                }*/
             })
 
            
