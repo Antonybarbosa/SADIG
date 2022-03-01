@@ -103,6 +103,7 @@ class EnviarSFTP{
         try {
             await client.access({
                 host: this.config.host,
+                port: 20,
                 user: this.config.username,
                 password: this.config.password,
                 secure: true,
