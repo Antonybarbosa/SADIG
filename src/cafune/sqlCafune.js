@@ -129,7 +129,7 @@ sellout(dataInicial, dataFinal){
                 PRO.CODPROD  AS Cod_interno,
                 PRO.DESCRPROD  AS Nome_Produto,
                 PRO.CODVOL  AS Unidade_Venda,
-                VOA.MULTIPVLR  AS Fator_Para_Pacote,
+                1 AS Fator_Para_Pacote,
                 CASE WHEN TPO.TIPMOV = 'V' AND TPO.deScroper NOT like'%BONI%'THEN 'F' WHEN TPO.TIPMOV = 'V' AND TPO.deScroper like'%BONI%' THEN 'B' WHEN TPO.TIPMOV = 'D' AND TPO.deScroper NOT like'%BONI%' THEN 'D' WHEN TPO.TIPMOV = 'D' AND TPO.deScroper like'%BONI%' THEN 'BD' ELSE TPO.TIPMOV END AS Tipo_Documento,  
                 ITE.USOPROD AS Tipo_Envio,  
                 (ITE.QTDNEG*ITE.VLRUNIT) + ITE.VLRIPI + ITE.VLRSUBST - ITE.VLRDESC - ITE.VLRREPRED AS VendaValorBruto,
@@ -150,13 +150,12 @@ sellout(dataInicial, dataFinal){
 
             FROM
 
-                TGFCAB CAB
+              TGFCAB CAB
             , TGFPAR PAR
             , TGFITE ITE
             , TGFPRO PRO
             , TGFTOP TPO
             , TGFVEN VEN
-            , TGFVOA voa
             , TSICID CID
             , TSIUFS UF
             , TSIEND ENDR
@@ -168,12 +167,12 @@ sellout(dataInicial, dataFinal){
                 AND CAB.CODTIPOPER = TPO.CODTIPOPER
                 AND CAB.DHTIPOPER = TPO.DHALTER
                 AND CAB.CODVEND = VEN.CODVEND
-                and VOA.CODPROD = PRO.CODPROD
+                
                 and CID.CODCID = PAR.CODCID
                 and UF.CODUF = CID.UF
                 and ENDR.CODEND = PAR.CODEND
                 and pro.marca = 'CAFUNE'
-                AND  TO_CHAR(TRUNC(CAB.DTFATUR),'yyyyMMdd') >= TO_CHAR(TRUNC(SYSDATE-31),'yyyyMMdd')
+                AND  TO_CHAR(TRUNC(CAB.DTFATUR),'yyyyMMdd') >= TO_CHAR(TRUNC(SYSDATE-36),'yyyyMMdd')
                 AND  TO_CHAR(TRUNC(CAB.DTFATUR),'yyyyMMdd') <= TO_CHAR(TRUNC(SYSDATE),'yyyyMMdd')
                 AND CAB.TIPMOV IN ('V','D')
                 AND CAB.STATUSNOTA = 'L'    
@@ -188,7 +187,7 @@ sellout(dataInicial, dataFinal){
                 PRO.CODPROD,
                 PRO.DESCRPROD,
                 PRO.CODVOL,
-                VOA.MULTIPVLR,
+                
                 CASE WHEN TPO.TIPMOV = 'V' AND TPO.deScroper NOT like'%BONI%'THEN 'F' WHEN TPO.TIPMOV = 'V' AND TPO.deScroper like'%BONI%' THEN 'B' WHEN TPO.TIPMOV = 'D' AND TPO.deScroper NOT like'%BONI%' THEN 'D' WHEN TPO.TIPMOV = 'D' AND TPO.deScroper like'%BONI%' THEN 'BD' ELSE TPO.TIPMOV END,
                 ITE.USOPROD,
                 (ITE.QTDNEG*ITE.VLRUNIT) + ITE.VLRIPI + ITE.VLRSUBST - ITE.VLRDESC - ITE.VLRREPRED,
