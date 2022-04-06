@@ -172,7 +172,7 @@ sellout(dataInicial, dataFinal){
                 and UF.CODUF = CID.UF
                 and ENDR.CODEND = PAR.CODEND
                 and pro.marca = 'CAFUNE'
-                AND  TO_CHAR(TRUNC(CAB.DTFATUR),'yyyyMMdd') >= TO_CHAR(TRUNC(SYSDATE-36),'yyyyMMdd')
+                AND  TO_CHAR(TRUNC(CAB.DTFATUR),'yyyyMMdd') >= TO_CHAR(TRUNC(SYSDATE-40),'yyyyMMdd')
                 AND  TO_CHAR(TRUNC(CAB.DTFATUR),'yyyyMMdd') <= TO_CHAR(TRUNC(SYSDATE),'yyyyMMdd')
                 AND CAB.TIPMOV IN ('V','D')
                 AND CAB.STATUSNOTA = 'L'    
