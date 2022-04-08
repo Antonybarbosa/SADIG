@@ -167,12 +167,12 @@ sellout(dataInicial, dataFinal){
                 AND CAB.CODTIPOPER = TPO.CODTIPOPER
                 AND CAB.DHTIPOPER = TPO.DHALTER
                 AND CAB.CODVEND = VEN.CODVEND
-                
+                AND PRO.USOPROD <> 'D'
                 and CID.CODCID = PAR.CODCID
                 and UF.CODUF = CID.UF
                 and ENDR.CODEND = PAR.CODEND
                 and pro.marca = 'CAFUNE'
-                AND  TO_CHAR(TRUNC(CAB.DTFATUR),'yyyyMMdd') >= TO_CHAR(TRUNC(SYSDATE-40),'yyyyMMdd')
+                AND  TO_CHAR(TRUNC(CAB.DTFATUR),'yyyyMMdd') >= TO_CHAR(TRUNC(SYSDATE-50),'yyyyMMdd')
                 AND  TO_CHAR(TRUNC(CAB.DTFATUR),'yyyyMMdd') <= TO_CHAR(TRUNC(SYSDATE),'yyyyMMdd')
                 AND CAB.TIPMOV IN ('V','D')
                 AND CAB.STATUSNOTA = 'L'    
