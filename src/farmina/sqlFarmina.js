@@ -55,7 +55,8 @@ class sqlFarmina{
     , TSIUFS UF
     
     
-    WHERE ENDR.CODEND = PAR.CODEND
+    WHERE 
+    ENDR.CODEND = PAR.CODEND
     AND BAI.CODBAI = PAR.CODBAI
     AND CID.CODCID = PAR.CODCID
     AND UF.CODUF = CID.UF
@@ -67,10 +68,10 @@ class sqlFarmina{
 
     config = {
 
-        host: '151.236.38.245',
+        host: 'distributors.farmina.com',
         port: 20,
         username: 'MeC200911',
-        password: 'y75*faU7'
+        password: '2bP?5w03r'
     
     };    
     
@@ -154,8 +155,8 @@ selloutFarmina(dataInicial, dataFinal){
                 AND cab.dhtipoper = tpo.dhalter
                 AND cab.codvend = ven.codvend
                 AND pro.marca = 'FARMINA'
-                AND  TO_CHAR(TRUNC(CAB.DTFATUR),'yyyyMMdd') >= ${dataInicial}
-                AND  TO_CHAR(TRUNC(CAB.DTFATUR),'yyyyMMdd') <= ${dataFinal}
+                AND  TO_CHAR(TRUNC(CAB.DTFATUR),'yyyyMMdd') >= TO_CHAR(TRUNC(SYSDATE-15),'yyyyMMdd')
+                AND  TO_CHAR(TRUNC(CAB.DTFATUR),'yyyyMMdd') <= TO_CHAR(TRUNC(SYSDATE),'yyyyMMdd')
                 AND cab.tipmov IN ('V','D')
                 AND cab.statusnota = 'L'
                 AND pro.codgrupoprod <= 5999999
