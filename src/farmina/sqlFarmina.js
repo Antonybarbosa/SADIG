@@ -4,66 +4,27 @@ class sqlFarmina{
     
     cabeçarioPdv = 'H;70220470000146;'
     rodape = 'E'
-    sqlPdv = `
-    SELECT 'V' || ';' || PAR.CGC_CPF || ';' || PAR.RAZAOSOCIAL || ';' || PAR.NOMEPARC || ';' || 
+    sqlPdv = `SELECT 'V' || ';' || PAR.CGC_CPF || ';' || PAR.NOMEPARC || ';' || PAR.NOMEPARC || ';' || 
     'BRA' || ';' || 'NE' || ';' || UF.UF || ';' || CID.NOMECID || ';' || BAI.NOMEBAI || ';' || ENDR.TIPO || '  ' || ENDR.NOMEEND || '  ' || PAR.NUMEND || '  ' || PAR.COMPLEMENTO   || ';' ||
-    'Grupo' || ';' || 'Classificação' || ';' || 
-    CASE WHEN NVL((SELECT
-        VEN.CODVEND
-    FROM
-        tgfven   ven,
-        tgfrpv   rpv
-    WHERE
-        ven.codvend = rpv.codvend
-        AND ven.codemp = 2
-        AND tipvend = 'V'
-        AND rpv.codparc = PAR.CODPARC AND ROWNUM = 1),0) = 0 THEN 11 ELSE  
-        (SELECT
-        VEN.CODVEND
-    FROM
-        tgfven   ven,
-        tgfrpv   rpv
-    WHERE
-        ven.codvend = rpv.codvend
-        AND ven.codemp = 2
-        AND tipvend = 'V'
-        AND rpv.codparc = PAR.CODPARC AND ROWNUM = 1) END || ' - ' || CASE WHEN NVL((SELECT
-        VEN.CODVEND
-    FROM
-        tgfven   ven,
-        tgfrpv   rpv
-    WHERE
-        ven.codvend = rpv.codvend
-        AND ven.codemp = 2
-        AND tipvend = 'V'
-        AND rpv.codparc = PAR.CODPARC AND ROWNUM = 1),0) = 0 THEN 'NADSON FILHO' ELSE  
-        (SELECT
-        VEN.APELIDO
-    FROM
-        tgfven   ven,
-        tgfrpv   rpv
-    WHERE
-        ven.codvend = rpv.codvend
-        AND ven.codemp = 2
-        AND tipvend = 'V'
-        AND rpv.codparc = PAR.CODPARC AND ROWNUM = 1) END || ';' || to_char(PAR.DTCAD,'YYYYMMDD') || ';' ||
-    PAR.CEP || ';'  || ';' || 'A' as dados
+    'Grupo' || ';' || 'Classificação' || ';' || VEN.CODVEND || ' - ' || VEN.APELIDO || ';' || to_char(PAR.DTCAD,'YYYYMMDD') || ';' ||
+    PAR.CEP || ';' || ';' || 'A' as dados
     FROM TGFPAR PAR
     , TSIEND ENDR
     , TSIBAI BAI
     , TSICID CID
     , TSIUFS UF
-    
-    
+    , TGFVEN VEN
+    , TGFCAB CAB  
     WHERE 
-    ENDR.CODEND = PAR.CODEND
+        ENDR.CODEND = PAR.CODEND
+    AND  TO_CHAR(TRUNC(CAB.DTFATUR),'yyyyMMdd') >= TO_CHAR(TRUNC(SYSDATE-60),'yyyyMMdd')
+    AND CAB.TIPMOV = 'V'
+    AND CAB.CODPARC = PAR.CODPARC 
     AND BAI.CODBAI = PAR.CODBAI
     AND CID.CODCID = PAR.CODCID
     AND UF.CODUF = CID.UF
-    
-    AND PAR.ATIVO='S' 
-    AND (( DECODE(PAR.CLIENTE, 'S', 'Sim', 'Não') = 'Sim') 
-     )
+    AND PAR.ATIVO='S'  
+    AND (CAB.CODVEND = VEN.CODVEND AND CAB.CODEMP=2)
         `;
 
     config = {
