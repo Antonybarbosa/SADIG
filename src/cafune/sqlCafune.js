@@ -130,7 +130,7 @@ sellout(dataInicial, dataFinal){
                 PRO.DESCRPROD  AS Nome_Produto,
                 PRO.CODVOL  AS Unidade_Venda,
                 1 AS Fator_Para_Pacote,
-                CASE WHEN TPO.TIPMOV = 'V' AND TPO.deScroper NOT like'%BONI%'THEN 'F' WHEN TPO.TIPMOV = 'V' AND TPO.deScroper like'%BONI%' THEN 'B' WHEN TPO.TIPMOV = 'D' AND TPO.deScroper NOT like'%BONI%' THEN 'D' WHEN TPO.TIPMOV = 'D' AND TPO.deScroper like'%BONI%' THEN 'DB' ELSE TPO.TIPMOV END AS Tipo_Documento,  
+                CASE WHEN TPO.TIPMOV = 'V' AND TPO.deScroper NOT like'%BONI%'THEN 'F' WHEN TPO.TIPMOV = 'V' AND TPO.deScroper like'%BONI%' THEN 'B' WHEN TPO.TIPMOV = 'D' AND TPO.deScroper NOT like'%BONI%' THEN 'D' WHEN TPO.TIPMOV = 'D' AND TPO.deScroper like'%BONI%' THEN 'BD' ELSE TPO.TIPMOV END AS Tipo_Documento,  
                 ITE.USOPROD AS Tipo_Envio,  
                 (ITE.QTDNEG*ITE.VLRUNIT) + ITE.VLRIPI + ITE.VLRSUBST - ITE.VLRDESC - ITE.VLRREPRED AS VendaValorBruto,
                 (ITE.QTDNEG*ITE.VLRUNIT) - ITE.VLRDESC + ITE.VLRREPRED  AS VendaValorLiquida,
