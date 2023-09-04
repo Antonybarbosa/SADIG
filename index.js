@@ -15,10 +15,10 @@ const cafune = require(path.join(__dirname +'/src/cafune/envioCafune.js'))
 
 function enviarsell(value){
 
-    if (value == 1 ){
+    if (value == 0 ){
     new farmina().enviarSell();
     }
-    if( value == 2){
+    if( value == 0){
     new farmina().enviarPDV();
     }
     if(value == 3){
