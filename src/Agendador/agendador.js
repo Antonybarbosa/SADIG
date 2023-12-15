@@ -50,7 +50,7 @@ class agendador{
                 },*/
                 timestamp: new Date().toISOString(),
                 footer: {
-                    text: 'Bot Inovacegroup',
+                    text: 'Bot InovaceGroup',
                     //icon_url: 'https://assets.agilecdn.com.br/images/logo_nnpessoa.png?v=690.png'//'https://imgur.com/M3hZVRm.png',//'https://i.imgur.com/AfFp7pu.png',
                 },
             };
