@@ -53,8 +53,8 @@ class consultaSnk{
                     }else {
                       console.log('Array de retorno vazio')
                     }
-                  }).catch(function (error) {
-                    console.log(error);
+                  }).catch(function (error) {                    
+                    console.log('Erro ao consultar'+error);
                   });
                   return dados
 
