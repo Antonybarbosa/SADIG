@@ -106,11 +106,11 @@ app.listen(process.env.PORT || port,()=>{
 
     console.log("Servidor rodando")
     
-    //agenda(enviarsell, '02', '18',1)
-    //agenda(enviarsell, '00', '08',1)
+    agenda(enviarsell, '02', '18',1)
+    agenda(enviarsell, '00', '08',1)
 
-    agenda(enviarsell, '* *', '*',1)
-    agenda(enviarsell, '* *', '*',1)
+    //agenda(enviarsell, '* *', '*',1)
+    //agenda(enviarsell, '* *', '*',1)
 
     //agenda(enviarsell, '55', '20',1)
     //agenda(enviarsell, '56', '20',2)
