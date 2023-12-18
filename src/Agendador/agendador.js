@@ -5,13 +5,15 @@ class agendador{
     StopStarSchedule(arraY){
         data  = new Date();
         if (data.getDay() > '0' && data.getDay() < '6'){
+            console.log("Dentro do dia")
 
-            if( data.getHours() > '18' &&  data.getHours() < '8'){
+            if( (data.getHours() > '18') ||  (data.getHours() < '08')){
+                    console.log("Fora da hora")
                     arraY[7].stop();
                     arraY[6].stop();
                     console.log('liberação inativa ->  ' +  data.getHours()+':'+data.getMinutes())
             }else{
-               
+                console.log("Dentro da hora")
                 arraY[7].start();
                 arraY[6].start();
                 console.log('liberação ativa  ->  ' +  data.getHours()+':'+data.getMinutes())
@@ -19,10 +21,10 @@ class agendador{
               
 
         }else{
-               
-            arraY[7].start();
-            arraY[6].start();
-            arraY[8].start();
+            console.log("Fora do dia")
+            arraY[7].stop();
+            arraY[6].stop();
+            arraY[8].stop();
             console.log('liberação ativa  ->  ' +  data.getHours()+':'+data.getMinutes())
         }           
         //console.log(arraY[7])
