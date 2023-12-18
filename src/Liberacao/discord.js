@@ -5,7 +5,7 @@ const urlProdução = 'https://discord.com/api/webhooks/1181275200503943189/lSSs
 const urlTeste = 'https://discord.com/api/webhooks/1179855592618217522/df6Vhzo3yt_1WaNFX0OkMKq-WpUW9YEVt2f09s89XeY073DWVMk0Gq4Gmx_afRYvWObL';
 const webhookClient = new WebhookClient({
     // Grupo geral do produção
-    url: urlTeste
+    url: urlProdução
 });
    
 
